@@ -90,6 +90,17 @@ Edit `sudo nano /mnt/etc/nixos/configuration.nix` to contin the following:
 }
 ```
 
-Finally, instal nixos`sudo nixos-install && reboot`
+Finally, instal nixos
+```bash
+sudo nixos-install
+sudo nixos-enter --root /mnt -c `passwd yourname`
+reboot
+```
 
 If set password for root during install, loging under root
+
+reduce power consumption
+```
+nix-shell -p powertop --run "sudo powertop --auto-tune"
+sudo nix --extra-experimental-features "nix-command flakes" run github:notthebee/AutoASPM
+```
